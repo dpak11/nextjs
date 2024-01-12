@@ -8,7 +8,7 @@ export default function TaskItem(props) {
 
   return (
     <div className={style.item}>
-        <div onClick={() => props.showDetails(id)}>
+        <div className={style.taskCell} style={{cursor:"pointer"}} onClick={() => props.showDetails(id)}>
             <div className={style.title}>
                 {title} <span className={style.due}>(Due on: {due_date})</span>
                 <span className={`${style.status} ${status === "completed" ? style.completed : style.pending}`} 

@@ -53,3 +53,6 @@
     background-color: red;
     display: inline-block;
 }
+.taskCell{
+    cursor: pointer;
+}

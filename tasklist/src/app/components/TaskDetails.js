@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import style from "../page.module.css";
+import Link from "next/link"
 
 export default function TaskDetails(props) {
   const [details, setDetails] = useState(null);
@@ -24,12 +25,13 @@ export default function TaskDetails(props) {
 
   return (
     <div>
+      <Link href="/tasklist">&lt; Go back to List</Link>
       <h2>Details Page</h2>
       {details && (
         <div>
           <div>
-            {details.title} <span>(Due on: {details.due_date})</span>
-            <div>Status: {details.status}</div>
+            <b>{details.title}</b> <span>(Due on: {details.due_date})</span>
+            <div><b>Status:</b> {details.status}</div>
           </div>
 
           <div>{details.description}</div>

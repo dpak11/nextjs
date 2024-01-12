@@ -8,8 +8,8 @@ export async function GET(request){
 export async function POST(request){
     // console.log(tasks);
     const body = await request.json();
-    const lastItemID = tasks[tasks.length-1].id;
-    const auto_id = Number(lastItemID)+1;
+    const lastItemID = tasks.length > 0 ? tasks[tasks.length-1].id : 1;
+    const auto_id = Number(lastItemID) + 1;
     tasks.push({...body.task, id: auto_id});
     return new Response(JSON.stringify({tasks}))
 }
