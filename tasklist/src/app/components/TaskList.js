@@ -3,13 +3,13 @@ import TaskItem from "./TaskItem";
 import style from "../page.module.css";
 import { useEffect, useState } from "react";
 import Link from "next/link"
+import { useRouter } from 'next/navigation'
 
 export default function TaskList() {
   const [tasks, setTasks] = useState([]);
+  const router = useRouter();
   
-
-  
-  const deletion = async (id) => {
+  const taskDeletion = async (id) => {
     const res = await fetch(`/api/tasks/${id}`,{method:'DELETE'});
     const data = await res.json();
     setTasks(data.updatedList);
@@ -32,13 +32,18 @@ export default function TaskList() {
     getTaskList();
   }, []);
 
-  const toggleStatus = (id, newStatus) => {
+  const toggleStatus = (event, id, newStatus) => {
+    event.stopPropagation();
     changeStatus(id, newStatus)
   };
 
   const deleteTask = (id) => {
-    deletion(id);
+    taskDeletion(id);
   };
+  const showDetails = (id) => {
+    console.log(id)
+    router.push(`/details/${id}`)
+  }
 
   return (
     <>
@@ -48,7 +53,10 @@ export default function TaskList() {
       <main className={style.main}>
       <p>(Click on the status to Change)</p>
         {tasks && tasks.map((task) => (
-          <TaskItem task={task} key={task.id} deleteTask={deleteTask} toggleStatus={toggleStatus} />
+          <TaskItem task={task} key={task.id} 
+          deleteTask={deleteTask} 
+          showDetails={showDetails} 
+          toggleStatus={toggleStatus} />
         ))}
       </main>
     </>

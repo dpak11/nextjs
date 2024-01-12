@@ -8,19 +8,22 @@ export default function TaskItem(props) {
 
   return (
     <div className={style.item}>
-      <div className={style.title}>
-        {title} <span className={style.due}>(Due on: {due_date})</span>
-        <span className={`${style.status} ${status === "completed" ? style.completed : style.pending}`} 
-        onClick={() => props.toggleStatus(id, status === "completed" ? "pending" : "completed")}>
-        Status: {status}
-      </span>
+        <div onClick={() => props.showDetails(id)}>
+            <div className={style.title}>
+                {title} <span className={style.due}>(Due on: {due_date})</span>
+                <span className={`${style.status} ${status === "completed" ? style.completed : style.pending}`} 
+                onClick={(e) => props.toggleStatus(e, id, status === "completed" ? "pending" : "completed")}>
+                Status: {status}
+            </span>
+            </div>
+            
+            <div className={style.description}>{description}</div>
+       </div>
+       <div>
+        <button className={style.delete} onClick={() => props.deleteTask(id)}>
+            Delete Task
+        </button>
       </div>
-     
-      <div className={style.description}>{description}</div>
-     
-      <button className={style.delete} onClick={() => props.deleteTask(id)}>
-        Delete Task
-      </button>
     </div>
   );
 }
