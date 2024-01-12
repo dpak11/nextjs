@@ -1,0 +1,52 @@
+.main{
+    margin-top: 20px;
+    border-top: solid 3px gray;
+}
+
+
+.title {
+    font-weight: bold;
+}
+.item {
+    background-color: #c6c8bf;
+    padding: 1em;
+    border: 1px solid gray;
+    margin-top: 5px;
+}
+.description {
+    padding: 1em 0 1em 1.2em;
+}
+.status{
+    border-radius: 3px;
+    border: 1px solid gray;
+    padding: 4px;
+    display: inline-block;
+    margin-left: 5px;
+    cursor: pointer;
+    font-weight: normal;
+}
+.completed {
+    color:#1a42bb;
+    background-color: #89aee7;
+    
+}
+.pending{
+    color:red;
+    border-color: red;
+    
+}
+
+.due{
+    font-size: .8em;
+    font-weight: normal;
+}
+.delete{
+    margin-top: 1em;
+}
+.error {
+    color:#fff;
+    margin-top:2em;
+    padding: 10px;
+    background-color: red;
+    display: inline-block;
+}
